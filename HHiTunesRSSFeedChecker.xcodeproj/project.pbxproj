@@ -13,6 +13,8 @@
 		F2AF5CAE1F4F7DCD00B1B7BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2AF5CAC1F4F7DCD00B1B7BC /* Main.storyboard */; };
 		F2AF5CB01F4F7DCD00B1B7BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2AF5CAF1F4F7DCD00B1B7BC /* Assets.xcassets */; };
 		F2AF5CB31F4F7DCD00B1B7BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2AF5CB11F4F7DCD00B1B7BC /* LaunchScreen.storyboard */; };
+		F2AF5CC21F4F7F9D00B1B7BC /* HHiTunesStorefrontFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2AF5CC11F4F7F9D00B1B7BC /* HHiTunesStorefrontFinder.swift */; };
+		F2AF5CC41F4F818E00B1B7BC /* HHiTunesRSSFeedChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2AF5CC31F4F818E00B1B7BC /* HHiTunesRSSFeedChecker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		F2AF5CAF1F4F7DCD00B1B7BC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F2AF5CB21F4F7DCD00B1B7BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F2AF5CB41F4F7DCD00B1B7BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F2AF5CC11F4F7F9D00B1B7BC /* HHiTunesStorefrontFinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHiTunesStorefrontFinder.swift; sourceTree = "<group>"; };
+		F2AF5CC31F4F818E00B1B7BC /* HHiTunesRSSFeedChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HHiTunesRSSFeedChecker.swift; sourceTree = "<group>"; };
 		FAE26287904DC835FB757433 /* Pods_HHiTunesRSSFeedChecker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HHiTunesRSSFeedChecker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -78,14 +82,24 @@
 		F2AF5CA71F4F7DCD00B1B7BC /* HHiTunesRSSFeedChecker */ = {
 			isa = PBXGroup;
 			children = (
+				F2AF5CC01F4F7F9D00B1B7BC /* HHiTunesStorefrontFinder */,
 				F2AF5CA81F4F7DCD00B1B7BC /* AppDelegate.swift */,
 				F2AF5CAA1F4F7DCD00B1B7BC /* ViewController.swift */,
 				F2AF5CAC1F4F7DCD00B1B7BC /* Main.storyboard */,
 				F2AF5CAF1F4F7DCD00B1B7BC /* Assets.xcassets */,
 				F2AF5CB11F4F7DCD00B1B7BC /* LaunchScreen.storyboard */,
 				F2AF5CB41F4F7DCD00B1B7BC /* Info.plist */,
+				F2AF5CC31F4F818E00B1B7BC /* HHiTunesRSSFeedChecker.swift */,
 			);
 			path = HHiTunesRSSFeedChecker;
+			sourceTree = "<group>";
+		};
+		F2AF5CC01F4F7F9D00B1B7BC /* HHiTunesStorefrontFinder */ = {
+			isa = PBXGroup;
+			children = (
+				F2AF5CC11F4F7F9D00B1B7BC /* HHiTunesStorefrontFinder.swift */,
+			);
+			path = HHiTunesStorefrontFinder;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,7 +232,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2AF5CC41F4F818E00B1B7BC /* HHiTunesRSSFeedChecker.swift in Sources */,
 				F2AF5CAB1F4F7DCD00B1B7BC /* ViewController.swift in Sources */,
+				F2AF5CC21F4F7F9D00B1B7BC /* HHiTunesStorefrontFinder.swift in Sources */,
 				F2AF5CA91F4F7DCD00B1B7BC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -387,6 +403,7 @@
 				F2AF5CB91F4F7DCD00B1B7BC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

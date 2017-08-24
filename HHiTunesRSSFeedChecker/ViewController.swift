@@ -9,17 +9,30 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    let feedChecker: HHiTunesRSSFeedChecker = HHiTunesRSSFeedChecker()
+    
+    @IBOutlet weak var startSimultaneouslyButton: UIButton!
+    @IBOutlet weak var startButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func startButtonHit(sender: UIButton) {
+        self.checkFeeds(simultaneously: false)
     }
-
+    
+    @IBAction func startSimultaneouslyButtonHit(sender: UIButton) {
+        self.checkFeeds(simultaneously: true)
+    }
+    
+    private func checkFeeds(simultaneously: Bool) {
+        self.feedChecker.findElegibleStoreFrontsForNewItunesFeeds(simultaneously: simultaneously) { (results) in
+            print("HUH?")
+        }
+    }
 
 }
 
