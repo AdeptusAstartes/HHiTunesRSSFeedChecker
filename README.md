@@ -1,12 +1,12 @@
 # HHiTunesRSSFeedChecker
 
-##Usage:
+## Usage:
 
 1. Open the workspace in Xcode
 2. Run in your iOS Simulator of choice
 3. Press one of the buttons to begin checking the feeds
 
-##Modes
+## Modes
 
 Simultaneous Mode loops through all country codes for all three feed types at once.  This often results in a lot of timeouts due to what I guess is probably throttling based on IP address.
 
