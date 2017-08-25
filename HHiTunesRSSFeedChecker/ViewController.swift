@@ -10,14 +10,18 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let feedChecker: HHiTunesRSSFeedChecker = HHiTunesRSSFeedChecker()
+    var feedChecker: HHiTunesRSSFeedChecker = HHiTunesRSSFeedChecker()
     
     @IBOutlet weak var startSimultaneouslyButton: UIButton!
     @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var outputSwitch: UISwitch!
 
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.activityIndicator.isHidden = true
     }
 
     @IBAction func startButtonHit(sender: UIButton) {
@@ -29,9 +33,28 @@ class ViewController: UIViewController {
     }
     
     private func checkFeeds(simultaneously: Bool) {
-        self.feedChecker.findElegibleStoreFrontsForNewItunesFeeds(simultaneously: simultaneously) { (results) in
-            print("HUH?")
+        self.disableButtons()
+        self.activityIndicator.isHidden = false
+        self.activityIndicator.startAnimating()
+        
+        self.feedChecker.findElegibleStoreFrontsForNewItunesFeeds(simultaneously: simultaneously, showDetailedOutput: self.outputSwitch.isOn) { (results) in
+            
+            self.enableButtons()
+            self.activityIndicator.stopAnimating()
+            self.activityIndicator.isHidden = true
+            
+            self.feedChecker.printResults(results: results)
         }
+    }
+    
+    private func disableButtons() {
+        self.startSimultaneouslyButton.isEnabled = false
+        self.startButton.isEnabled = false
+    }
+    
+    private func enableButtons() {
+        self.startSimultaneouslyButton.isEnabled = true
+        self.startButton.isEnabled = true
     }
 
 }

@@ -16,7 +16,11 @@ enum HHiTunesRSSFeedCheckerFeedType: String {
 }
 
 struct HHiTunesRSSFeedChecker {
-    func findElegibleStoreFrontsForNewItunesFeeds(simultaneously: Bool, completion: @escaping (_ results: [String: [String]]) -> ()) {
+    var showDetailedOutput: Bool = true
+    
+    mutating func findElegibleStoreFrontsForNewItunesFeeds(simultaneously: Bool, showDetailedOutput: Bool, completion: @escaping (_ results: [String: [String]]) -> ()) {
+        self.showDetailedOutput = showDetailedOutput
+        
         if (simultaneously) {
             self.runSimultaneously(completion: completion)
         } else {
@@ -75,8 +79,10 @@ struct HHiTunesRSSFeedChecker {
                     if (response.result.isFailure) {
                         totalComplete+=1
                         
-                        print(totalComplete, "of", countryCodes.count, "for", feedType.rawValue, "FAILURE for", countryCode, "ERROR:", response.error!.localizedDescription)
-
+                        if (self.showDetailedOutput) {
+                            print(totalComplete, "of", countryCodes.count, "for", feedType.rawValue, "FAILURE for", countryCode, "ERROR:", response.error!.localizedDescription)
+                        }
+                        
                         if (totalComplete == countryCodes.count) {
                             completion(feedType, eligibleCountryCodes.sorted())
                         }
@@ -87,7 +93,9 @@ struct HHiTunesRSSFeedChecker {
                             eligibleCountryCodes.append(countryCode)
                             totalComplete+=1
                             
-                            print(totalComplete, "of", countryCodes.count, "for", feedType.rawValue, "SUCCESS for", countryCode)
+                            if (self.showDetailedOutput) {
+                                print(totalComplete, "of", countryCodes.count, "for", feedType.rawValue, "SUCCESS for", countryCode)
+                            }
                             
                             if (totalComplete == countryCodes.count) {
                                 completion(feedType, eligibleCountryCodes.sorted())
@@ -95,7 +103,9 @@ struct HHiTunesRSSFeedChecker {
                         } else {
                             totalComplete+=1
                             
-                            print(totalComplete, "of", countryCodes.count, "for", feedType.rawValue, "FEED NOT AVAILABLE for", countryCode)
+                            if (self.showDetailedOutput) {
+                                print(totalComplete, "of", countryCodes.count, "for", feedType.rawValue, "FEED NOT AVAILABLE for", countryCode)
+                            }
                             
                             if (totalComplete == countryCodes.count) {
                                 completion(feedType, eligibleCountryCodes.sorted())
@@ -123,7 +133,20 @@ struct HHiTunesRSSFeedChecker {
         return countryCodes
     }
     
-    private func printResults(results: [String: [String]]) {
+    func printResults(results: [String: [String]]) {
+        let countryCodes = self.getAllCountryCodes(lowercase: true)
         
+        if (self.showDetailedOutput) {
+            print("\n")
+        }
+        
+        for (key, value) in results {
+            print("Feed Type:", key)
+            print("Feeds found for", value.count, "of", countryCodes.count, "countries")
+            print("Countries found:", value)
+            print(countryCodes.count - value.count, "either missing or timed out")
+            print("\n")
+            
+        }
     }
 }
