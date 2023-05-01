@@ -1,6 +1,6 @@
 # HHiTunesRSSFeedChecker
 
-**This code was written specifically as a favor to Apple's affiliate program engineers in order for them to monitor their music new release affiliate RSS feeds.  The reason I donatd this code to them was because they actually customized heavy metal new release feeds for me for Heavy Headlines.**
+**This code was written specifically as a favor to Apple's affiliate program engineers in order for them to monitor their music new release affiliate RSS feeds.  The reason I donated this code to them was because they actually customized heavy metal new release feeds for me for Heavy Headlines.**
 
 ## Usage:
 
